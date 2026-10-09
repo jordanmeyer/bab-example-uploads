@@ -10,4 +10,6 @@ Chrome browser selection was unavailable; the in-app browser succeeded. Shared b
 
 ## Final developer round
 
-Pending checkpoint and production/browser checks. Independent reviewer has been requested; no final PASS is claimed yet.
+Checkpoint1daf1f48cd85192dd605753860e756e84ca5f444, Node22.19.0/npm10.9.3. npm ci and dependency check pass; build retained7 package notices; audit0. Browser model31/31 passed after commit. Desktop1440, narrow390 and320 frames have document scrollWidth equal clientWidth (1439,389,319 due iframe borders). Screenshot found missing whitespace where a narrow-layout hidden br joined “thewhole”; fixed in next checkpoint.
+
+Production FAILED at this checkpoint: KPIs remained unset and console said Invalid variable reference "t". Independent reviewer identified Arquero parsing a minified closure variable. The development tests passed because names had not been minified. The fix uses aq.escape for the authored filter closure and removes unused params. This failure is retained; no final PASS is claimed until packaged behavior is retested.

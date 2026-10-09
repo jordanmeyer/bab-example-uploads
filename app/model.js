@@ -67,7 +67,7 @@ export function joinData(salesCsv, returnsCsv) {
 const sums = { units: aq.op.sum('units'), returnedUnits: aq.op.sum('returnedUnits'), grossCents: aq.op.sum('grossCents'), refundCents: aq.op.sum('refundCents'), netCents: aq.op.sum('netCents') };
 const zero = { units: 0, returnedUnits: 0, grossCents: 0, refundCents: 0, netCents: 0 };
 export function summarize(dataset, { month = '', product = '', channel = '', group = 'product' } = {}) {
-  const table = aq.from(dataset.rows).params({ month, product, channel }).filter(d => (!month || d.month === month) && (!product || d.product === product) && (!channel || d.channel === channel));
+  const table = aq.from(dataset.rows).filter(aq.escape(d => (!month || d.month === month) && (!product || d.product === product) && (!channel || d.channel === channel)));
   const rows = table.objects();
   if (!rows.length) return { rows: [], totals: { ...zero }, groups: [], months: [] };
   const groups = table.groupby(group === 'pair' ? ['product', 'channel'] : [group]).rollup(sums).objects()

@@ -21,6 +21,8 @@ Classmates can replace two local CSV exports, find gross sales leadership that v
 
 ECharts' generated accessibility description exposed internal stacked dimensions including NaN despite valid visible values; an explicit description now directs readers to the exact table. A huge shared browser viewport made an unbounded screenshot unhelpful, so tests/layout.html supplies separate fixed1440/390/320 frames without changing shared settings. Chrome was unavailable; Codex in-app browser worked.
 
+Production checkpoint1daf1f48 failed: minified closure names caused Arquero Invalid variable reference "t". Use aq.escape for the authored filter closure; production tests are mandatory because source-mode success missed this boundary.
+
 ## Decision Log
 
 2026-10-09: Assign returns to original sale months as agreed by simulated student; display maturity limits and avoid profit/cash-flow claims. Aggregate returns before the left join to preserve one row per sale. Parse USD into bounded integer cents to avoid floating point accounting. Use sorted rank maps and top12 chart/top100 table presentation bounds so the10,000-line input limit remains usable. Select channel by default to make the sample reversal immediate. Refresh restores samples and all imports remain transient.
