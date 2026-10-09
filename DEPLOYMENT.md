@@ -15,3 +15,7 @@ Live app: https://jordanmeyer.github.io/bab-example-uploads/
 Initial published commit:d50e59024f2b29ba66782e7be135d20e2bfb9a48. Actions run37888660919 succeeded for this exact commit. Reviewed/evaluated sourceb64d85f7658a18602a9ad5877232d100069ac463 remains unchanged; only reports followed.
 
 Coordinator opened the real Pages URL and imported the two committed synthetic CSV fixtures using actual file choosers. Live output: gross$350, returns$90, net$260,4/15 units returned; January filter: gross$200, returns$60, net$140. Sample charts, table and local assets loaded under the repository prefix. Source/notices URLs point to the expected destinations. No warning/error appeared in observed console. A getByLabel selection timed out; observed DOM ID selection worked, recorded as host automation behavior. Screenshot retained in course evidence. This establishes configured-Mac live publication, not Work, clean-machine or novice usability.
+
+## Returning-browser correction
+
+Follow-up publicationc0fae93786ae58d249adb978065ec667a4375143 succeeded in Actions37892426427. Reviewed source81cbd7110caef07f754d9b377e183dca4e17f5a7 changes only native autocomplete attributes. Coordinator live pre-interaction Back check reset Jan/Product to allmonths/Channel matching totals91182/15134/76048, threecorrectgroups, twocharts and emptywarning/errorlogs.
