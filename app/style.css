@@ -152,3 +152,4 @@ main{padding:26px 18px}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}
 }
+@media(max-width:400px){.metrics{grid-template-columns:1fr}.metrics section{border-right:0}.metrics strong{font-size:28px}}

@@ -36,3 +36,8 @@ Separate simplification pass: removed redundant Arquero params after using an es
 Independent review verdict and rendered chart-state findings are owned by reviewer in REVIEW.md. Publication remains coordinator-owned.
 
 Freshness before and after the final model/production recheck: committed/staged/unstaged relevant diffs exit0, untracked relevant-path listing empty, PLAN status empty and plan diff empty. No executable source changes followed036710e during this developer round.
+
+
+## Independent narrow review — Round 2 FAIL, checkpoint036710e
+
+Reviewer visually inspected actual320px production. Despite no page overflow, Net sales wrapped the final decimal digit onto another line and value-axis labels crowded together in the narrow plot. Required correction: one-column KPI layout at400px and below, fewer value ticks and hide-overlap behavior. Axis labels use compact USD notation for very large valid amounts; exact cents remain in KPIs/tables/exports. Model/import checks stayed passing. This failed visual round is preserved; a new source checkpoint and rendered review are required.
