@@ -78,3 +78,17 @@ The user requested that existing live examples follow revised guidance. First ex
 Expected sample sums from independent Python arithmetic: gross$291,788/refunds$51,827/net$239,961,5,452sold/834returned,384sales/326events; Paid social grossrank1/netrank2. New pair fixture yieldsCanvas/Email$140,Canvas/Search$20,Travel/Search$120. Ports9713tests/9714production; npmci/build repeat safely and generated output remainsignored. New source must not inherit old sample expected answers. Existing failed rounds remain inEVALUATION.md. No public/privateinput is imported into evidence. This plan follows~/.codex/PLANS.md and all original lifecycle records remain readable.
 
 Revision validation: source 7b6369e27c216a9b24c1931581807983158076e7 passes 32/32 browser model cases, valid/rejected imports, keyboard matrix filtering, 101-group display caps and Back consistency. Production frames measure 1439/1439, 389/389 and 319/319 client/scroll widths with all local fonts loaded. Current revision expected answers supersede the historical baseline above. Independent review and deployment remain separate steps.
+
+## Remaining-checklist correction plan — 2026-10-09
+
+Scope: UPLOAD-01/02/04/05/07/08/11/12/14/15 and applicable ALL items. UPLOAD-13 stays a clearly labeled refund-month student extension, not a second maintained analytics mode. Preserve the eight-cohort default and exact accounting. The revised user request authorizes these corrections without new simulated approvals.
+
+Implement two dated snapshots of the same10×$20 June sale: June10 has2 returned units ($160 net/20%); July5 adds3 returns ($100 net/50%). Loading either uses the actual parser/join, source labels and ordinary dashboard. Expose raw return events for a selected joined line, their aggregate and one-row join. Preserve imported filenames/counts transactionally. Move grouping beside the global export and name its grain; export source/date/filter/time-basis metadata. Matrix selection focuses a static announced result summary and provides a nearby all-combinations action. Single-group narration reports retained revenue/rate instead of artificial rank movement. Public walkthrough gives prediction, within-product/month counterexample, import correction task, exact answers and a limitation.
+
+Meaningful model tests cover snapshot maturation, retained raw events and summary metadata. Existing parser boundaries remain. Actual browser checks must include matrix Enter/focus/full-matrix recovery; both-file import, unmatched/over-return rejection with identity preserved, correction; exports;320px, long names and separate200% text. CUA currently unavailable in this agent; root is coordinating actual browser execution on owned9713/9714. No DOM inspection substitutes for ALL-11 actual screen-reader or ALL-16 real novice session.
+
+- [x] Read revised common/uploads checklist and full current source/model/plan.
+- [x] Implement bounded corrections; source checkpoint follows.
+- [ ] Clean install/build, real model/browser/320/text checks and per-ID evidence; root independent review before push.
+
+Correction build validation: clean npm ci installed 23 packages with zero reported vulnerabilities; dependency checker and production build pass. The build retains 9 license sections and emits the existing >500kB advisory. Thirty-five pure-model cases also ran under a minimal Node result reporter; this is not the browser test-page run. Browser, narrow/text and independent review remain pending.

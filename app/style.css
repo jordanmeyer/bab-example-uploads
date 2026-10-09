@@ -129,7 +129,7 @@ footer p{width:100%;margin-bottom:0}
 .sidebar h1 br{display:none}
 .intro{max-width:50ch}
 .dataset-card{margin:20px 0;padding:18px 0}
-.dataset-card p{display:inline;margin-left:6px}
+.dataset-card p{display:block}
 .dataset-card button{display:block;margin-top:12px}
 .sample-downloads{margin-top:20px}
 .sample-downloads button{display:inline-block;margin-right:18px}
@@ -157,3 +157,7 @@ main{padding:26px 18px}
 
 h1,h2{text-wrap:balance}.sidebar{align-self:start}.view-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}[hidden]{display:none!important}.matrix-heading{margin-top:28px}.matrix-cell{min-height:44px;min-width:24px;padding:10px;background:var(--duke-whisper-gray);border:1px solid var(--duke-graphite);color:var(--duke-navy-blue);white-space:nowrap}.matrix-cell:hover{background:var(--duke-hatteras)}#audit-view th:nth-child(-n+4),#audit-view td:nth-child(-n+4){text-align:left}#matrix th{text-align:left}#matrix td{text-align:right}.contract{padding:12px 0}.contract>summary{font-size:15px}.contract>h2{margin-top:18px}footer a,.topbar>a:last-child,.sample-downloads a{display:inline-flex;align-items:center;min-height:32px}.metrics{font-variant-numeric:lining-nums tabular-nums}.sidebar-foot{margin-top:24px}.sample-downloads{margin-top:20px}.chart-section{margin-bottom:16px}
 @media(max-width:760px){.sidebar{padding:24px 20px}.sidebar h1{font-size:34px;max-width:600px}.dataset-card{margin:16px 0}.sidebar-foot{display:none}.metrics{grid-template-columns:1fr 1fr}.metrics strong{font-size:clamp(20px,5.8vw,28px)}.metrics section{padding:15px 10px}.sample-downloads{margin-top:12px}#matrix{font-size:11px}.view-tabs .button{white-space:normal}.filters{grid-template-columns:1fr 1fr}.filters label:last-of-type{grid-column:1 / -1}}
+
+.analysis-shortcut{display:block;padding:10px 0;min-height:32px;color:white;font-weight:600}#source-files{white-space:pre-line;overflow-wrap:anywhere;margin-top:10px}.export-controls{display:flex;flex-wrap:wrap;align-items:end;gap:14px}.export-controls label{max-width:100%;min-width:190px}.export-controls button{white-space:normal;max-width:100%}.maturity{margin:24px 0;padding:16px;border:1px solid var(--duke-shackleford)}.maturity button{margin:6px 0}#matrix-selection:focus,#raw-title:focus{outline:3px solid var(--duke-copper);outline-offset:4px}#raw-events{margin-top:24px;padding-top:18px;border-top:1px solid var(--duke-shackleford)}#raw-sale,#raw-join{overflow-wrap:anywhere}.topbar{min-height:88px;height:auto;padding-block:14px}.view-tabs button{white-space:normal;max-width:100%}
+
+.button{white-space:normal;max-width:100%}.filters label{min-width:0}.filters select{min-width:0}.brand{min-width:0}.brand>span:last-child{overflow-wrap:anywhere}.mark{flex-shrink:0}@media(max-width:400px){.metrics{grid-template-columns:1fr}.topbar{flex-wrap:wrap;gap:14px}.filters{grid-template-columns:1fr}}

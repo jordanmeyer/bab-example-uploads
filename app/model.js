@@ -62,7 +62,7 @@ export function joinData(salesCsv, returnsCsv) {
     .derive({ netCents: d => d.grossCents - d.refundCents }).objects();
   const over = joined.find(row => row.returnedUnits > row.units);
   if (over) throw Error(`returns: “${over.line_id}” returns ${over.returnedUnits} units but sold ${over.units}.`);
-  return { rows: joined, returnCount: returns.length, observedThrough: [...sales.map(d => d.sale_date), ...returns.map(d => d.return_date)].sort().at(-1) };
+  return { rows: joined, returnEvents: returns, returnCount: returns.length, observedThrough: [...sales.map(d => d.sale_date), ...returns.map(d => d.return_date)].sort().at(-1) };
 }
 const sums = { units: aq.op.sum('units'), returnedUnits: aq.op.sum('returnedUnits'), grossCents: aq.op.sum('grossCents'), refundCents: aq.op.sum('refundCents'), netCents: aq.op.sum('netCents') };
 const zero = { units: 0, returnedUnits: 0, grossCents: 0, refundCents: 0, netCents: 0 };
@@ -83,4 +83,14 @@ export function summarize(dataset, { month = '', product = '', channel = '', gro
 }
 export function exportCsv(rows) {
   return Papa.unparse(rows, { escapeFormulae: true });
+}
+
+export function summaryExportRows(dataset, filters, source) {
+  return summarize(dataset,filters).groups.map(d=>({
+    sales_file:source.sales,returns_file:source.returns,source_sales_lines:dataset.rows.length,source_return_events:dataset.returnCount,
+    time_basis:'original_sale_month',observed_through:dataset.observedThrough,
+    sale_month_filter:filters.month,product_filter:filters.product,channel_filter:filters.channel,group_by:filters.group,
+    group:d.label,gross_usd:(d.grossCents/100).toFixed(2),returned_usd:(d.refundCents/100).toFixed(2),net_usd:(d.netCents/100).toFixed(2),
+    sold_units:d.units,returned_units:d.returnedUnits,unit_return_rate:d.units?d.returnedUnits/d.units:null,gross_rank:d.grossRank,net_rank:d.netRank
+  }));
 }
