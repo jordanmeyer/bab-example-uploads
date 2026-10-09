@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Paired imports and summary export</title><style>body{font:16px/1.5 system-ui,sans-serif;margin:24px;color:#262626}button{font:inherit;padding:12px 18px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f2f1;padding:16px;max-width:1100px}iframe{display:block;width:1280px;height:900px;border:1px solid #666;margin-top:24px}</style></head>
+<body><h1>Paired imports and summary export</h1><p>This authored browser check assigns two synthetic <code>File</code> objects through <code>DataTransfer</code>, submits the real import form, and captures the real export Blob while suppressing its download click. It does not operate the native picker, save a file, or observe a novice. Application parsing, joining, rendering and export code are unchanged.</p><button id="run" disabled>Run paired import and export checks</button><p id="status" role="status">Loading the app…</p><pre id="report">No observations yet.</pre><iframe title="Uploads application under test" src="/app/"></iframe>
+<script>
+const frame=document.querySelector('iframe'),run=document.querySelector('#run'),status=document.querySelector('#status'),report=document.querySelector('#report');
+const assert=(value,message)=>{if(!value)throw Error(message);};
+const salesHeader='line_id,sale_date,product,channel,units,unit_price_usd\n';
+const returnsHeader='return_id,line_id,return_date,units\n';
+const firstSales=salesHeader+'A,2026-01-03,Canvas tote,Email,10,20.00\nB,2026-02-02,Travel mug,Search,5,30.00\n';
+const firstReturns=returnsHeader+'R1,A,2026-02-02,2\nR2,A,2026-03-01,1\nR3,B,2026-03-01,1\n';
+const correctedSales=firstSales+'C,2026-01-05,Canvas tote,Search,4,25.00\nD,2026-02-10,Canvas tote,Email,2,15.00\n';
+const correctedReturns=firstReturns+'R4,C,2026-03-02,1\nR5,D,2026-03-03,1\n';
+const correctedNames=['synthetic-corrected-sales.csv','synthetic-corrected-returns.csv'];
+function waitFor(d,condition){return new Promise((resolve,reject)=>{const check=()=>{if(!condition())return;observer.disconnect();clearTimeout(timer);resolve();};const observer=new MutationObserver(check),timer=setTimeout(()=>{observer.disconnect();reject(Error('Expected app state did not arrive within 30 seconds.'));},30000);observer.observe(d.body,{subtree:true,childList:true,characterData:true,attributes:true});check();});}
+frame.addEventListener('load',async()=>{try{await waitFor(frame.contentDocument,()=>frame.contentDocument.getElementById('notice')?.textContent.startsWith('Explore the synthetic sample'));run.disabled=false;status.textContent='Ready. Only authored synthetic files will be used.';}catch(error){status.textContent=error.message;}});
+run.onclick=async()=>{
+ run.disabled=true;status.textContent='Running six paired import/export checks…';const records=[],d=frame.contentDocument,w=frame.contentWindow,$=id=>d.getElementById(id);
+ const state=()=>({dataset:$('dataset-name').textContent,files:$('source-files').textContent,counts:$('dataset-meta').textContent,coverage:$('coverage').textContent,filters:Object.fromEntries(['month','product','channel','group'].map(id=>[id,$(id).value])),gross:$('gross').textContent,returned:$('refund').textContent,net:$('net').textContent,units:$('units').textContent,returnedUnits:$('returned-units').textContent,rate:$('rate').textContent,summary:[...$('summary-body').rows].map(row=>[...row.cells].map(cell=>cell.textContent)),joinedRows:[...$('rows-body').rows].map(row=>[...row.cells].map(cell=>cell.textContent)),exportLabel:$('export').textContent,exportContext:$('export-context').textContent});
+ const observe=()=>({notice:$('notice').textContent,rejected:$('notice').classList.contains('error'),...state()});
+ function record(name,observation){records.push({name,passed:true,...observation});report.textContent=JSON.stringify({observations:records},null,2);}
+ async function importPair(sales,returns,names,rejected=false){
+  for(const [id,text,name] of [['sales-file',sales,names[0]],['returns-file',returns,names[1]]]){const transfer=new w.DataTransfer();transfer.items.add(new w.File([text],name,{type:'text/csv'}));$(id).files=transfer.files;$(id).dispatchEvent(new w.Event('change',{bubbles:true}));}
+  let submitted=false;const complete=waitFor(d,()=>submitted&&(rejected?$('notice').classList.contains('error'):$('notice').textContent.startsWith('Imported ')));
+  const start=performance.now();submitted=true;$('import-form').requestSubmit();await complete;return {submitToResultsMs:Number((performance.now()-start).toFixed(1)),...observe()};
+ }
+ function select(id,value){$(id).value=value;assert($(id).value===value,`Missing ${id} option ${value}.`);$(id).dispatchEvent(new w.Event('change',{bubbles:true}));}
+ async function captureSummary(){
+  const originalCreate=w.URL.createObjectURL,originalClick=w.HTMLAnchorElement.prototype.click,blobs=new Map(),downloads=[];
+  w.URL.createObjectURL=function(blob){const url=originalCreate.call(this,blob);blobs.set(url,blob);return url;};
+  w.HTMLAnchorElement.prototype.click=function(){if(this.download&&blobs.has(this.href)){downloads.push({filename:this.download,blob:blobs.get(this.href)});return;}return originalClick.call(this);};
+  try{$('export').click();}finally{w.URL.createObjectURL=originalCreate;w.HTMLAnchorElement.prototype.click=originalClick;}
+  assert(downloads.length===1,'Expected exactly one generated summary download.');
+  return {filename:downloads[0].filename,mimeType:downloads[0].blob.type,csv:await downloads[0].blob.text()};
+ }
+ const columns=['sales_file','returns_file','source_sales_lines','source_return_events','time_basis','observed_through','sale_month_filter','product_filter','channel_filter','group_by','group','gross_usd','returned_usd','net_usd','sold_units','returned_units','unit_return_rate','gross_rank','net_rank'];
+ const expectedCsv=rows=>[columns,...rows].map(row=>row.join(',')).join('\r\n');
+ try{
+  $('reset').click();select('group','channel');
+  const first=await importPair(firstSales,firstReturns,['synthetic-first-sales.csv','synthetic-first-returns.csv']);
+  assert(first.dataset==='Your local files'&&first.files==='Sales: synthetic-first-sales.csv (2 lines)\nReturns: synthetic-first-returns.csv (3 events)','First valid pair did not replace both filenames/counts.');
+  assert(first.gross==='$350'&&first.returned==='$90'&&first.net==='$260'&&first.returnedUnits==='4 of 15 units returned','Independent first-pair accounting differs.');record('Valid pair establishes two-file identity and $350 − $90 = $260',first);
+  const retained=JSON.stringify(state());
+  const unmatched=await importPair(firstSales,returnsHeader+'U1,Z,2026-03-01,1\n',['synthetic-unmatched-sales.csv','synthetic-unmatched-returns.csv'],true);
+  assert(unmatched.notice.includes('unmatched line_id')&&unmatched.notice.includes('Z'),'Unmatched return was not identified.');assert(JSON.stringify(state())===retained,'Unmatched rejection changed prior filenames, filters, rows or totals.');record('Unmatched return rejects the pair and retains the complete prior dataset identity',unmatched);
+  const over=await importPair(firstSales,returnsHeader+'O1,A,2026-02-02,10\nO2,A,2026-03-01,1\n',['synthetic-over-sales.csv','synthetic-over-returns.csv'],true);
+  assert(over.notice.includes('returns 11 units but sold 10'),'Aggregated over-return was not identified.');assert(JSON.stringify(state())===retained,'Over-return rejection changed prior filenames, filters, rows or totals.');record('Two individually valid return events exceeding sold units reject without replacement',over);
+  const corrected=await importPair(correctedSales,correctedReturns,correctedNames);
+  assert(!corrected.rejected&&corrected.files==='Sales: synthetic-corrected-sales.csv (4 lines)\nReturns: synthetic-corrected-returns.csv (5 events)'&&corrected.counts==='4 sales lines · 5 return events','Corrected pair did not recover current filenames/counts.');
+  assert(corrected.gross==='$480'&&corrected.returned==='$130'&&corrected.net==='$350'&&corrected.returnedUnits==='6 of 21 units returned'&&corrected.joinedRows.length===4,'Corrected pair arithmetic or one-row-per-sale grain differs.');record('Corrected paired import replaces both identities and preserves one row per sale',corrected);
+  select('group','pair');select('month','2026-01');select('product','Canvas tote');
+  const pairView=state(),pairExport=await captureSummary();
+  const scope=[...correctedNames,4,5,'original_sale_month','2026-03-03','2026-01','Canvas tote','','pair'];
+  const pairExpected=expectedCsv([[...scope,'Canvas tote · Email','200.00','60.00','140.00',10,3,0.3,1,1],[...scope,'Canvas tote · Search','100.00','25.00','75.00',4,1,0.25,2,2]]);
+  assert(pairView.gross==='$300'&&pairView.returned==='$85'&&pairView.net==='$215'&&pairView.summary.length===2,'Filtered product still needs two channel groups totaling $215.');
+  assert(pairView.exportLabel==='Export product × channel summary (2 groups)'&&JSON.stringify(pairView.summary)===JSON.stringify([['Canvas tote · Email','$200','$60','$140','30.0%','#1 → #1'],['Canvas tote · Search','$100','$25','$75','25.0%','#2 → #2']]),'Visible paired grouping does not match the independent two-group answer.');
+  assert(pairExport.filename==='revenue-summary-by-pair.csv'&&pairExport.csv===pairExpected,'Export grain, current scope, filenames, observed date or exact values differ from the two-group view.');record('Product × channel export keeps both channels and original-sale-month metadata',{view:pairView,export:pairExport});
+  select('channel','Search');const selectedView=state(),selectedExport=await captureSummary();
+  const selectedExpected=expectedCsv([[...correctedNames,4,5,'original_sale_month','2026-03-03','2026-01','Canvas tote','Search','pair','Canvas tote · Search','100.00','25.00','75.00',4,1,0.25,1,1]]);
+  assert(selectedView.net==='$75'&&selectedView.summary.length===1&&selectedView.returnedUnits==='1 of 4 units returned'&&selectedView.exportLabel==='Export product × channel summary (1 groups)','Chosen product/channel view did not reduce to the expected single group.');
+  assert(selectedExport.filename==='revenue-summary-by-pair.csv'&&selectedExport.csv===selectedExpected,'Chosen channel filter or visible-group ranks are stale in export.');record('Chosen product/channel export carries current filters, values and within-view ranks',{view:selectedView,export:selectedExport});
+  status.textContent='6/6 passed. Real import/render/export code exercised with authored synthetic events; no native picker or saved download verified.';
+ }catch(error){status.textContent='FAILED — '+error.message;records.push({passed:false,error:error.message,current:observe()});}
+ report.textContent=JSON.stringify({scope:'Authored paired File/DataTransfer submissions and real export Blob capture. Download click suppressed; no native picker, saved file or human walkthrough claim.',environment:{userAgent:navigator.userAgent,iframeWidth:w.innerWidth,iframeHeight:w.innerHeight,appUrl:w.location.href},observations:records},null,2);run.disabled=false;
+};
+</script></body></html>
