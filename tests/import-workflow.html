@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Paired imports and summary export</title><style>body{font:16px/1.5 system-ui,sans-serif;margin:24px;color:#262626}button{font:inherit;padding:12px 18px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f2f1;padding:16px;max-width:1100px}iframe{display:block;width:1280px;height:900px;border:1px solid #666;margin-top:24px}</style></head>
-<body><h1>Paired imports and summary export</h1><p>This authored browser check assigns two synthetic <code>File</code> objects through <code>DataTransfer</code>, submits the real import form, and captures the real export Blob while suppressing its download click. It does not operate the native picker, save a file, or observe a novice. Application parsing, joining, rendering and export code are unchanged.</p><button id="run" disabled>Run paired import and export checks</button><p id="status" role="status">Loading the app…</p><pre id="report">No observations yet.</pre><iframe title="Uploads application under test" src="/app/"></iframe>
+<body><h1>Paired imports and summary export</h1><p>This authored browser check assigns two synthetic <code>File</code> objects through <code>DataTransfer</code>, submits the real import form, and captures the real export Blob while suppressing its download click. It does not operate the native picker, save a file, or observe a novice. Application parsing, joining, rendering and export code are unchanged.</p><button id="run" disabled>Run paired import and export checks</button><div><button id="long-name" disabled>Load long synthetic filenames</button> <label>Frame width <select id="width"><option>1440</option><option>390</option><option>320</option></select></label> <label>Text size <select id="text-size"><option value="1">100%</option><option value="2">200%</option></select></label> <button id="enlarge">Apply text size to current view</button> <button id="measure">Measure current view</button></div><p>Layout controls change only this same-origin frame. Load the long-name fixture, choose a width, then inspect the app and measure it. Text enlargement doubles computed DOM font sizes; reapply after opening a newly rendered view. It is not shared browser zoom.</p><pre id="layout-report">No layout observations yet.</pre><p id="status" role="status">Loading the app…</p><pre id="report">No observations yet.</pre><iframe title="Uploads application under test" src="/app/"></iframe>
 <script>
 const frame=document.querySelector('iframe'),run=document.querySelector('#run'),status=document.querySelector('#status'),report=document.querySelector('#report');
 const assert=(value,message)=>{if(!value)throw Error(message);};
@@ -13,7 +13,7 @@ const correctedSales=firstSales+'C,2026-01-05,Canvas tote,Search,4,25.00\nD,2026
 const correctedReturns=firstReturns+'R4,C,2026-03-02,1\nR5,D,2026-03-03,1\n';
 const correctedNames=['synthetic-corrected-sales.csv','synthetic-corrected-returns.csv'];
 function waitFor(d,condition){return new Promise((resolve,reject)=>{const check=()=>{if(!condition())return;observer.disconnect();clearTimeout(timer);resolve();};const observer=new MutationObserver(check),timer=setTimeout(()=>{observer.disconnect();reject(Error('Expected app state did not arrive within 30 seconds.'));},30000);observer.observe(d.body,{subtree:true,childList:true,characterData:true,attributes:true});check();});}
-frame.addEventListener('load',async()=>{try{await waitFor(frame.contentDocument,()=>frame.contentDocument.getElementById('notice')?.textContent.startsWith('Explore the synthetic sample'));run.disabled=false;status.textContent='Ready. Only authored synthetic files will be used.';}catch(error){status.textContent=error.message;}});
+frame.addEventListener('load',async()=>{try{await waitFor(frame.contentDocument,()=>frame.contentDocument.getElementById('notice')?.textContent.startsWith('Explore the synthetic sample'));run.disabled=false;document.querySelector('#long-name').disabled=false;status.textContent='Ready. Only authored synthetic files will be used.';}catch(error){status.textContent=error.message;}});
 run.onclick=async()=>{
  run.disabled=true;status.textContent='Running six paired import/export checks…';const records=[],d=frame.contentDocument,w=frame.contentWindow,$=id=>d.getElementById(id);
  const state=()=>({dataset:$('dataset-name').textContent,files:$('source-files').textContent,counts:$('dataset-meta').textContent,coverage:$('coverage').textContent,filters:Object.fromEntries(['month','product','channel','group'].map(id=>[id,$(id).value])),gross:$('gross').textContent,returned:$('refund').textContent,net:$('net').textContent,units:$('units').textContent,returnedUnits:$('returned-units').textContent,rate:$('rate').textContent,summary:[...$('summary-body').rows].map(row=>[...row.cells].map(cell=>cell.textContent)),joinedRows:[...$('rows-body').rows].map(row=>[...row.cells].map(cell=>cell.textContent)),exportLabel:$('export').textContent,exportContext:$('export-context').textContent});
@@ -63,4 +63,31 @@ run.onclick=async()=>{
  }catch(error){status.textContent='FAILED — '+error.message;records.push({passed:false,error:error.message,current:observe()});}
  report.textContent=JSON.stringify({scope:'Authored paired File/DataTransfer submissions and real export Blob capture. Download click suppressed; no native picker, saved file or human walkthrough claim.',environment:{userAgent:navigator.userAgent,iframeWidth:w.innerWidth,iframeHeight:w.innerHeight,appUrl:w.location.href},observations:records},null,2);run.disabled=false;
 };
+
+const longButton=document.querySelector('#long-name'),layoutReport=document.querySelector('#layout-report'),fonts=new Map();
+document.querySelector('#width').onchange=event=>{frame.style.width=event.target.value+'px';};
+longButton.onclick=async()=>{
+ longButton.disabled=true;run.disabled=true;status.textContent='Loading the real form with long synthetic filenames…';
+ const d=frame.contentDocument,w=frame.contentWindow,names=['synthetic-sales-reviewed-classroom-export-with-long-source-name-for-narrow-layout-recovery-check.csv','synthetic-returns-reviewed-classroom-export-with-long-source-name-for-narrow-layout-recovery-check.csv'];
+ try{
+  for(const [id,text,name]of [['sales-file',firstSales,names[0]],['returns-file',firstReturns,names[1]]]){const transfer=new w.DataTransfer();transfer.items.add(new w.File([text],name,{type:'text/csv'}));d.getElementById(id).files=transfer.files;}
+  d.getElementById('import-form').requestSubmit();
+  await waitFor(d,()=>d.getElementById('notice').textContent.startsWith('Imported ')&&names.every(name=>d.getElementById('source-files').textContent.includes(name)));
+  status.textContent='Long synthetic filenames loaded through the actual import form. Inspect width and text enlargement separately.';
+  layoutReport.textContent=JSON.stringify({fixture:'Two synthetic sale lines and three return events; real File/DataTransfer submission, not native file selection.',filenames:names,source:d.getElementById('source-files').textContent,gross:d.getElementById('gross').textContent,returned:d.getElementById('refund').textContent,net:d.getElementById('net').textContent},null,2);
+ }catch(error){status.textContent='Long-name fixture FAILED — '+error.message;}finally{longButton.disabled=false;run.disabled=false;}
+};
+document.querySelector('#enlarge').onclick=()=>{
+ const d=frame.contentDocument,w=frame.contentWindow;
+ for(const [element,saved]of fonts)if(element.isConnected){element.style.fontSize=saved.inline;element.style.lineHeight=saved.lineInline;}
+ const elements=[...d.querySelectorAll('body,body *')].filter(element=>!['SCRIPT','STYLE'].includes(element.tagName));
+ for(const element of elements)if(!fonts.has(element)){const style=w.getComputedStyle(element);fonts.set(element,{size:parseFloat(style.fontSize),line:parseFloat(style.lineHeight),inline:element.style.fontSize,lineInline:element.style.lineHeight});}
+ if(document.querySelector('#text-size').value==='2')for(const element of elements){const saved=fonts.get(element);element.style.fontSize=saved.size*2+'px';element.style.lineHeight=Number.isFinite(saved.line)?saved.line*2+'px':'normal';}
+};
+document.querySelector('#measure').onclick=async()=>{
+ const d=frame.contentDocument,w=frame.contentWindow;await d.fonts.ready;const source=d.getElementById('source-files'),style=w.getComputedStyle(source);
+ layoutReport.textContent=JSON.stringify({scope:'Actual frame dimensions and DOM font enlargement; inspect the visible result separately. No human, screen-reader, native picker or native zoom claim.',requestedWidth:Number(document.querySelector('#width').value),width:d.documentElement.clientWidth,scrollWidth:d.documentElement.scrollWidth,height:d.documentElement.scrollHeight,textFactor:Number(document.querySelector('#text-size').value),source:{text:source.textContent,width:source.clientWidth,scrollWidth:source.scrollWidth,fontSize:style.fontSize,whiteSpace:style.whiteSpace,overflowWrap:style.overflowWrap},activeView:d.querySelector('[data-view][aria-pressed="true"]')?.textContent,fonts:[...d.fonts].map(font=>({family:font.family,weight:font.weight,status:font.status})),externalRequests:w.performance.getEntriesByType('resource').filter(item=>new URL(item.name).origin!==location.origin).map(item=>item.name),smallControls:[...d.querySelectorAll('button,a,input,select,summary')].filter(element=>{const r=element.getBoundingClientRect();return r.width&&r.height&&(r.width<24||r.height<24);}).map(element=>({text:element.textContent.trim().slice(0,70),width:element.getBoundingClientRect().width,height:element.getBoundingClientRect().height}))},null,2);
+};
+frame.style.width=document.querySelector('#width').value+'px';
+
 </script></body></html>
