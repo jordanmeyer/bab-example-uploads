@@ -13,7 +13,7 @@ Classmates can replace two local CSV exports, find gross sales leadership that v
 - [x] (2026-10-09) Prepare isolated managed application with approved pinned libraries.
 - [x] (2026-10-09) Build strict transactional CSV parsing, exact-cent joins/aggregates and explanatory interface.
 - [x] (2026-10-09) Observe31/31 exploratory model tests passing in browser.
-- [ ] Commit evaluated source and inspect fixed-width desktop/narrow, keyboard, import/export and production output.
+- [x] (2026-10-09) Commit source, verify31 model cases, and exercise packaged imports/filters/errors/downloads; inspect fixed-width layouts and keyboard focus.
 - [ ] Resolve independent review findings and record final PASS.
 - [ ] Coordinator publishes and verifies exact live revision.
 
@@ -29,7 +29,7 @@ Production checkpoint1daf1f48 failed: minified closure names caused Arquero Inva
 
 ## Outcomes & Retrospective
 
-A usable dashboard and31 model checks exist. Independent review, final rendered evidence and publication are still pending. The sample illustrates why high gross revenue alone is insufficient; it does not establish a business recommendation.
+A usable dashboard and31 model checks exist. A production-only Arquero minification failure was found and fixed, then known-answer imports and failed transactional replacements passed in the packaged app. Independent review and publication remain pending. The sample illustrates why high gross revenue alone is insufficient; it does not establish a business recommendation.
 
 ## Context and Orientation
 
