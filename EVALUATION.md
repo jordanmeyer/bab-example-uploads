@@ -52,3 +52,20 @@ Current build uses index-BLlrDVGi.js and index-CrM2htBU.css. Production build su
 ## Follow-up history regression,2026-10-09
 
 Targetedregressionafterroadmaprevealedbrowsernativeformrestorationissue: Jan2026+ComparebyProductcorrectlyshows4productrows, butawayto/tests/andBackretainedJan/productcontrolswhilefreshJSrenderedallmonths/channelresults(Paidsocialgross34158). OriginalindependentPASSretained; thisisnewboundedregressionevidence. Onlyfixisnativeautocompleteoffonfiltersformandgroupselect; noarithmetic/CSV/chartlayoutchange. Targetedrecheckrecordedafterbuild.
+
+
+## Authorized live revision — developer round, 2026-10-09
+
+Tested source 7b6369e27c216a9b24c1931581807983158076e7 (including PLAN, app, tests, build tooling and font licenses). Clean npm ci, approved dependency check and production build passed. Audit reports zero vulnerabilities. Notices now retain nine package/font sections. Vite's 794.06 kB main bundle (265 kB gzip) advisory remains visible.
+
+The actual browser model page on port 9713 passed 32/32 cases. The added case proves joint product/channel grouping keeps two channels of one product separate. Independent Python arithmetic specified sample answers before the browser: 384 sale lines, 326 return events, 5,452 sold units, 834 returned; gross $291,788, refunds $51,827, net $239,961. The packaged default matched. Paid social moves from gross rank 1 to net rank 2; Organic search takes net rank 1. Eight month points and overlapping synthetic return rates replace the earlier uniformly engineered three-month sample.
+
+Production on port 9714: keyboard Enter on the Weekender tote × Paid social matrix button set both filters and showed 756 sold / 308 returned units, 40.7%, net $39,872. May + Everyday tee + Email showed 30 / 10 units and net $560. Clear filters restored totals. The matrix supplies counts and rates; the graph explicitly describes whole-dollar rounding, while CSVs preserve cents. Revenue is explicitly distinguished from profit.
+
+Native file chooser import of the committed two-line sales and three-event returns fixture gave $350 gross / $90 refunds / $260 net and 26.7%. An unmatched return ID rejected replacement and preserved $260. A synthetic 101-product/header-only-returns fixture showed exactly 100 summary rows, with “Chart shows 12 of 101 groups. Table shows 100 of 101 groups.” Its matrix truthfully showed 12 of 101 products and 1 of 1 channels; net remained $1,010. Restoring the sample cleared those exceptional truncation labels. One three-chooser automation batch took about 273 seconds despite the bounded call; later chooser operations completed promptly. This is a browser-tool duration limitation, not an app timing claim. No further slow repetitions were needed.
+
+The authored same-origin production harness measured 1440 / 390 / 320 CSS-pixel frames: client/scroll widths 1439/1439, 389/389, 319/319; page heights 1731, 2896, 3157. All three local font faces loaded. Initial performance entries showed no external resources. No controls below 24 px were found in these paths. Desktop and narrow screenshots were inspected; tables have local horizontal scrolling. The harness tests responsive CSS, not device emulation or complete assistive-technology certification. Console warning/error query returned an empty array.
+
+After May/tee/Email selection, navigating away and Back returned All months/products/channels, $291,788 gross and $239,961 net before interaction. Control/result state was consistent. app pageshow renders from current control values. Lazy initialization of the hidden trend chart prevents zero-width ECharts initialization. A separate simplification pass preserved one join/model path, removed unnecessary disabled paging in favor of bounded views, and kept the existing Papa Parse + Arquero + ECharts recipe without adding a table dependency.
+
+Source and PLAN freshness comparison against the tested checkpoint is clean; subsequent edits are reports/README/ExecPlan only. Independent approval and live deployment are not claimed by this developer round. Historical failures and the original checks above remain intact.

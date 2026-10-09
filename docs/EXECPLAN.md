@@ -72,6 +72,9 @@ The user requested that existing live examples follow revised guidance. First ex
 
 - [x] (2026-10-09) Read current guidance, original brief/roleplay and whole source; fetch cleanorigin.
 - [x] (2026-10-09) Implement8months, joint matrix/cellfilter, concise views, rounding/dates/localfonts/provenance and actual-only caps.
-- [ ] Checkpoint and runfinal model/browser/productionchecks; independentreview/publication.
+- [x] (2026-10-09) Checkpoint revised source and complete model/browser/production checks.
+- [ ] Independent review and publication of the live revision.
 
 Expected sample sums from independent Python arithmetic: gross$291,788/refunds$51,827/net$239,961,5,452sold/834returned,384sales/326events; Paid social grossrank1/netrank2. New pair fixture yieldsCanvas/Email$140,Canvas/Search$20,Travel/Search$120. Ports9713tests/9714production; npmci/build repeat safely and generated output remainsignored. New source must not inherit old sample expected answers. Existing failed rounds remain inEVALUATION.md. No public/privateinput is imported into evidence. This plan follows~/.codex/PLANS.md and all original lifecycle records remain readable.
+
+Revision validation: source 7b6369e27c216a9b24c1931581807983158076e7 passes 32/32 browser model cases, valid/rejected imports, keyboard matrix filtering, 101-group display caps and Back consistency. Production frames measure 1439/1439, 389/389 and 319/319 client/scroll widths with all local fonts loaded. Current revision expected answers supersede the historical baseline above. Independent review and deployment remain separate steps.
