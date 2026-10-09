@@ -62,3 +62,16 @@ joinData(salesCsv, returnsCsv) returns validated rows, returnCount and observedT
 Revision note: initial living plan records implementation and exploratory checks; final review remains explicit rather than inferred from compilation.
 
 Revision note: both failed independent rounds remain in REVIEW.md/EVALUATION.md. Final source b64d85f is approved; later commits contain reports only.
+
+
+## Authorized live revision milestones
+
+The user requested that existing live examples follow revised guidance. First expandapp/sample.js to8months with varied reproducible return rates, while preserving the separate small verification fixture. Next adaptapp/app.js andindex.html to show the product×channel interaction with counts, actual-only truncation labels, revenue-specific explanation and concise revenue/trend/audit navigation. Keep PapaParse/Arquero/ECharts versions unchanged; copy the canonical local font bundle and notice collector. Finally checkpoint the revised PLAN/source/tests/tooling and runnpmci, dependency check, build, model test page and actual prefixed production. Verify default rank reversal, cross-filter, miniature import/error recovery, keyboard and1440/390/320layout, actual fonts and return navigation. Independent review and rootpublication follow.
+
+## Revision progress
+
+- [x] (2026-10-09) Read current guidance, original brief/roleplay and whole source; fetch cleanorigin.
+- [x] (2026-10-09) Implement8months, joint matrix/cellfilter, concise views, rounding/dates/localfonts/provenance and actual-only caps.
+- [ ] Checkpoint and runfinal model/browser/productionchecks; independentreview/publication.
+
+Expected sample sums from independent Python arithmetic: gross$291,788/refunds$51,827/net$239,961,5,452sold/834returned,384sales/326events; Paid social grossrank1/netrank2. New pair fixture yieldsCanvas/Email$140,Canvas/Search$20,Travel/Search$120. Ports9713tests/9714production; npmci/build repeat safely and generated output remainsignored. New source must not inherit old sample expected answers. Existing failed rounds remain inEVALUATION.md. No public/privateinput is imported into evidence. This plan follows~/.codex/PLANS.md and all original lifecycle records remain readable.

@@ -8,7 +8,7 @@ Intended Pages URL: https://jordanmeyer.github.io/bab-example-uploads/ (publicat
 
 ## Run and verify
 
-Use Node22.19.0/npm10.9.3. Run npm ci (a writable temporary cache can be specified), npm run test:browser -- --port 9503, then open http://127.0.0.1:9503/tests/. Application development is at /app/. npm run build generates notices and production dist; npm run preview -- --port 9504 serves http://127.0.0.1:9504/bab-example-uploads/. npm run dev is also available. Tests import the same model as the application. tests/layout.html provides fixed1440/390/320 frames of the production9504 preview for shared-browser verification. Run both servers when inspecting frames.
+Use Node22.19.0/npm10.9.3. Run npm ci (a writable temporary cache can be specified), npm run test:browser -- --port 9713, then open http://127.0.0.1:9713/tests/. Application development is at /app/. npm run build generates notices and production dist; npm run preview -- --port 9714 serves http://127.0.0.1:9714/bab-example-uploads/. npm run dev is also available. Tests import the same model as the application. tests/layout.html provides fixed3840/390/320 frames of the production9714 preview for shared-browser verification. Run both servers when inspecting frames.
 
 ## Interpretation
 
@@ -23,3 +23,5 @@ Every sample row is deterministically generated in app/sample.js, invented for c
 Libraries: Papa Parse5.7.0 (MIT) handles CSV; Arquero8.0.3 (BSD-3-Clause) performs substantive aggregate/join/filter/group transformations; Apache ECharts6.1.0 (Apache-2.0) plots revenue. Vite8.3.4 is the managed build. Exact dependencies and lockfile are retained. The build collects distribution licenses/notices into app/public/THIRD-PARTY-NOTICES.txt, linked from the website. No external runtime assets, remote APIs, analytics or fonts.
 
 Campus Designer's unchanged Duke navy/royal tokens and supporting copper guide the visual design. Georgia replaces EB Garamond; Arial/Helvetica replace Open Sans via local system fonts. No font binaries, institutional marks, affiliation or endorsement. Keyboard controls and tables complement charts; evaluation records the actual rendered checks rather than claiming complete accessibility certification.
+
+The authorized live revision adds8months of varied synthetic data, the product×channel matrix, actual-only truncation notes, rounded totalUSD and a concise revenue/trends/audit view structure. Unit prices and exports retain cents. See[How this was built](BUILD-STORY.md) for the original brief, actual simulated planning records, recipes and evidence.

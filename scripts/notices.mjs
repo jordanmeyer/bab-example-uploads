@@ -1,8 +1,9 @@
-// Include installed package notices in the website; never publish node_modules.
+// Include local font and installed package notices in the website; never publish node_modules.
 import { readFile, readdir, mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 const lock = JSON.parse(await readFile('package-lock.json', 'utf8'));
-const sections = [];
+const sections = await Promise.all(['ebgaramond-license.txt', 'opensans-license.txt']
+  .map(name => readFile(`app/theme/fonts/${name}`, 'utf8')));
 for (const [path, entry] of Object.entries(lock.packages)) {
   if (!path || entry.dev) continue;
   if (!path.startsWith('node_modules/') || entry.link) throw Error(`Non-registry dependency: ${path}`);
@@ -22,4 +23,4 @@ ${entry.license || 'See notice'}
 }
 await mkdir('app/public', { recursive: true });
 await writeFile('app/public/THIRD-PARTY-NOTICES.txt', sections.join('\n\n--------\n\n').split('\n').map(line => line.trimEnd()).join('\n').trimEnd() + '\n');
-console.log(`Retained notices for ${sections.length} installed packages.`);
+console.log(`Retained ${sections.length} font/package notice sections.`);
