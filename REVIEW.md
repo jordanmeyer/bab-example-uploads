@@ -1,6 +1,6 @@
 # Independent review
 
-Reviewer owns this record; developer owns implementation. Publication requires verified PASS for actual source. All data used here is synthetic.
+Reviewer owns this record; developer owns implementation. Publication requires verified PASS for actual source. All data used here is synthetic. Current status: **PASS for source81cbd7110caef07f754d9b377e183dca4e17f5a7**, including the bounded history follow-up after the preserved Round3 PASS.
 
 ## Round 1 — FAIL — 2026-10-09
 
@@ -27,3 +27,17 @@ Verified Enter on Restore sample and Next produces lines21–40 of144; Tab after
 Dependency checker independently accepted exact approved packages/registry lockfile; inspected workflow/base/source destination and tracked executable file list. Developer reinstall/build and independent sample recomputation are recorded in EVALUATION, not represented as reviewer-run npm ci. Relevant committed/staged/working-tree diff checks and untracked source/PLAN checks were clean before/after final browser run. PLAN unchanged. Browser log inspection retains only the historical Round1 error from old asset `index-VN6AX90_.js`; no new warning/error from current build was observed. Source and DOM runtime references are local; available tools lack complete request capture, so universal network isolation is not claimed. Live repository/link and Pages behavior remain coordinator publication checks.
 
 No required findings remain. The tool is useful within its agreed sales-cohort boundary, with transparent return completeness and non-profit limitations. Approved to publish this source or report-only descendants after freshness checks. Large bundle, omitted-return uncertainty and fixed-width rather than device emulation remain disclosed limits. This is not full accessibility or business-model certification.
+
+## Bounded follow-up — native history restoration
+
+After the same browser behavior was confirmed in other native-form examples, reviewer requested one targeted regression: set January and Product grouping, navigate away and Back, then compare controls and results **before any interaction**. Developer reproduced January/Product controls against restored all-month data and a three-channel table. The earlier reviewer test had checked after pressing Clear filters, so it did not cover this pre-interaction state. The previous arithmetic/import/visual findings remain valid; this newly observed inconsistency reopens the history boundary only.
+
+Developer notified the coordinator before changing the published source and is correcting autocomplete policy on the filters form and separate grouping selector. Prior PASS and deployment are historical evidence, not silently rewritten as never having occurred. Revised source and independent pre-interaction return checks remain pending; no new feature is requested.
+
+## Follow-up PASS — source81cbd7110caef07f754d9b377e183dca4e17f5a7
+
+Reviewer inspected the full diff against the prior passing executable source: only autocomplete disabled on the filters form and grouping selector. Model, PLAN, JavaScript, CSS and tests are unchanged. Final relevant-source diff is empty.
+
+Coordinator independently selected January/Product in production: four product rows, including Weekender gross12282/refund2937/net9345. After navigating to the test page and Back, **before interaction**, month/product/channel controls are empty and grouping is Channel. The table correctly shows three channel rows: Paid social34158/12850/21308; Organic search28650/2284/26366; Email28374/0/28374. KPIs are91182/15134/76048. Both chart canvases remain mounted and captured warning/error logs are empty. The independent witness closes the exact failed boundary; no full arithmetic rerun was necessary for this HTML-only change.
+
+This follow-up browser work was performed by the coordinator independently of the developer because the reviewer's browser was unavailable; earlier Round3 browser work was personally performed by this reviewer. All required findings are again closed. Root may publish the ordinary update after freshness/build/live checks.
