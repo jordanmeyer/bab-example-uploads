@@ -48,8 +48,8 @@ function table(id, rows) {
 function load(next, identity) {
   dataset = next;source=identity;auditLineId=null;eventsByLine=new Map();for(const event of dataset.returnEvents){if(!eventsByLine.has(event.line_id))eventsByLine.set(event.line_id,[]);eventsByLine.get(event.line_id).push(event);}
   $('dataset-name').textContent = source.label;
-  $('source-files').textContent=`Sales: ${source.sales} (${number(dataset.rows.length)} lines)\nReturns: ${source.returns} (${number(dataset.returnCount)} events)`;
-  $('dataset-meta').textContent = `${number(dataset.rows.length)} sales lines · ${number(dataset.returnCount)} return events`;
+  $('source-files').textContent=`Sales: ${source.sales} (${number(dataset.rows.length)} ${dataset.rows.length===1?'line':'lines'})\nReturns: ${source.returns} (${number(dataset.returnCount)} ${dataset.returnCount===1?'event':'events'})`;
+  $('dataset-meta').textContent = `${number(dataset.rows.length)} sales ${dataset.rows.length===1?'line':'lines'} · ${number(dataset.returnCount)} return ${dataset.returnCount===1?'event':'events'}`;
   for (const id of ['month', 'product', 'channel']) {
     $(id).replaceChildren(new Option(`All ${id === 'month' ? 'months' : `${id}s`}`, ''));
     [...new Set(dataset.rows.map(d => d[id]))].sort().forEach(value => $(id).add(new Option(id === 'month' ? monthName(value) : value, value)));
@@ -70,18 +70,18 @@ function renderRaw(row) {
   const events=eventsByLine.get(row.line_id)||[];
   $('raw-sale').textContent=`Sale ${row.line_id}: ${dateName(row.sale_date)}, ${row.product}, ${row.channel}; ${number(row.units)} units × ${unitMoney(row.priceCents)} = ${money(row.grossCents)} gross.`;
   table('event-body',events.slice(0,100).map(event=>[event.return_id,dateName(event.return_date),number(event.units)]));
-  $('raw-join').textContent=`${events.length} return events${events.length>100?' (first 100 shown)':''}: ${events.length<=100?`${events.map(e=>e.units).join(' + ')||'0'} = `:''}${row.returnedUnits} returned units in total. Aggregate first, then join once: ${money(row.grossCents)} − ${money(row.refundCents)} = ${money(row.netCents)} net, in one joined sale row.${events.length>1?` Joining the raw events directly would repeat this sale ${events.length} times and inflate its gross to ${money(row.grossCents*events.length)}.`:''}`;
+  $('raw-join').textContent=`${events.length} return ${events.length===1?'event':'events'}${events.length>100?' (first 100 shown)':''}: ${events.length<=100?`${events.map(e=>e.units).join(' + ')||'0'} = `:''}${row.returnedUnits} returned units in total. Aggregate first, then join once: ${money(row.grossCents)} − ${money(row.refundCents)} = ${money(row.netCents)} net, in one joined sale row.${events.length>1?` Joining the raw events directly would repeat this sale ${events.length} times and inflate its gross to ${money(row.grossCents*events.length)}.`:''}`;
 }
 function render() {
   page = 0;
   view = summarize(dataset, filters());
   const { totals: t, groups, months } = view;
   $('gross').textContent = money(t.grossCents); $('refund').textContent = money(t.refundCents); $('net').textContent = money(t.netCents);
-  $('units').textContent = `${number(t.units)} units across ${number(view.rows.length)} sales lines`;
+  $('units').textContent = `${number(t.units)} units across ${number(view.rows.length)} sales ${view.rows.length===1?'line':'lines'}`;
   $('rate').textContent = rate(t.returnedUnits, t.units); $('returned-units').textContent = `${number(t.returnedUnits)} of ${number(t.units)} units returned`;
   $('refund-share').textContent = `${rate(t.refundCents, t.grossCents)} of gross sales returned`;
   $('empty').hidden = !!view.rows.length;
-  $('export').textContent=`Export ${$('group').selectedOptions[0].textContent.toLowerCase()} summary (${groups.length} groups)`;
+  $('export').textContent=`Export ${$('group').selectedOptions[0].textContent.toLowerCase()} summary (${groups.length} ${groups.length===1?'group':'groups'})`;
   $('export-context').textContent=`Original sale-month cohorts · ${$('month').value?monthName($('month').value):'all months'} · ${$('product').value||'all products'} · ${$('channel').value||'all channels'}. CSV includes this scope, filenames and observed-through date; blank filter metadata means all.`;
   $('matrix-selection').textContent=`${$('product').value||'All products'} × ${$('channel').value||'all channels'} · ${$('month').value?monthName($('month').value):'all sale months'}: ${number(t.returnedUnits)} / ${number(t.units)} units returned (${rate(t.returnedUnits,t.units)}).`;
   $('export').disabled = !groups.length; $('export-rows').disabled = !view.rows.length;
@@ -139,7 +139,7 @@ $('import-form').addEventListener('submit', async event => {
     const next = joinData(...texts);
     if (version !== importVersion) return;
     load(next, {label:'Your local files',sales:sales.name,returns:returns.name});
-    message(`Imported ${number(next.rows.length)} sales lines and ${number(next.returnCount)} return events. All IDs matched. Files remain in this tab only.`);
+    message(`Imported ${number(next.rows.length)} sales ${next.rows.length===1?'line':'lines'} and ${number(next.returnCount)} return ${next.returnCount===1?'event':'events'}. All IDs matched. Files remain in this tab only.`);
   } catch (error) {
     if (version === importVersion) message(`${error.message} Previous data is unchanged.`, true);
   }
