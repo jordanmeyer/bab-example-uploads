@@ -71,3 +71,26 @@ After May/tee/Email selection, navigating away and Back returned All months/prod
 Source and PLAN freshness comparison against the tested checkpoint is clean; subsequent edits are reports/README/ExecPlan only. Independent approval and live deployment are not claimed by this developer round. Historical failures and the original checks above remain intact.
 
 Independent coordinator PASS at 7b6369e received after full source/PLAN and browser review; details are in REVIEW.md. Freshness comparison remains clean for app, tests, PLAN and tooling. Report-only publication is authorized; live status remains pending until root verifies Pages.
+
+## Remaining-checklist corrections — source c6499d43b3156877126f7e3a2f9bacdd0e3136b0 — browser review pending
+
+Clean install, approved-dependency check and production build passed. This checkpoint addresses the revised126-item checklist rather than the previous live-revision review. BUILD-STORY contains a bounded authored student task and exact answers; it is not an actual novice observation. The suite contains35 cases, with current browser execution pending. CUA returned no available browsers in the implementation agent; parent review has the actual test/production URLs on9713/9714. The authored320/200%text harness is available at the production/review.html; font enlargement is not native browser zoom. Actual screen-reader and novice walkthroughs remain open, and no readiness claim is made. Source/PLAN paths are committed; generated dist/node_modules stay ignored. No publication has occurred for this correction round.
+
+## Independent source/model review — PASS at c6499d43b3156877126f7e3a2f9bacdd0e3136b0
+
+Reviewer: collaborating agent `/root/live_revision_operations`, October 9, 2026. The independent agent read full app/model/index/BUILD-STORY and relevant CSS/tests. A raw CSV reduction outside Arquero confirmed gross 29,178,800 cents, refund 5,182,700 cents and net 23,996,100 cents; Paid social 11,035,600−3,360,400=7,675,200 cents versus Organic search 9,476,500 cents; Everyday tee/Email 33/380 and May 10/30 with net 56,000 cents. Maturity 20%/$160→50%/$100, raw-event aggregation, export metadata and static focus destination were coherent. No actionable source blocker was found.
+
+This is source/model approval only. Actual production interaction, keyboard, imports/downloads, 320px and 200% text checks remain separate root-owned observations. Actual screen-reader and novice sessions remain open; none is inferred from this review.
+
+
+## Final bounded correction review — source c6499d43b3156877126f7e3a2f9bacdd0e3136b0
+
+The coordinator confirmed35/35 actual browser model cases at this checkpoint. Production interactions are retained in course uploads/browser-interactions.json. Selecting only Email produced one-group narration with $68,444 retained revenue and107/1,464 returned units (7.3%). Enter on Everyday tee × Email applied the two filters and moved focus to #matrix-selection instead of BODY; its33/380 rate was8.7%.
+
+The actual cohort snapshots kept original gross at$200. June10 showed2/10 returned, $40 refunds and$160 net; July5 showed5/10, $100 refunds and$100 net. The reviewer inspected the raw MR1=2/MR2=3 events becoming one M1 sale with$100 net and the explanatory $400 duplicated-gross direct-join trap. This is actual UI observation of the ordinary synthetic example path, not a native file-import session.
+
+UPLOAD-01/02/04/05/07/08/11/14/15 are implemented with the source/model and scoped interaction evidence above. UPLOAD-13 remains an explicitly optional separate refund-month student extension; current cohort analysis does not implement or imply refund-month cash flow. UPLOAD-12 stays open: no current-round native sample downloads/header inspection, unmatched/over-return rejection with both values and filenames preserved, or corrected-pair import was observed. Current-round summary download and saved metadata inspection also remain unverified despite the35-case model coverage. Do not carry historical native import results forward as evidence for new source-identity behavior.
+
+ALL-02/05/07/14 paths are implemented; ALL-08 is not applicable. ALL-12 remains open for current production320px and separate200% text observations, especially long imported filenames. ALL-11 remains open for an actual screen-reader task and ALL-16 for an actual novice. The12-app task/answer/blank-observation packet is prepared, not conducted. No blanket readiness or accessibility claim is made.
+
+Before this report, committed/staged/working source, tests, PLAN, workflow, packages, scripts and licenses match c6499d4; only EVALUATION.md differs. No push or corrected live deployment is claimed. Production9714/test9713 remain available for coordinator gates.
