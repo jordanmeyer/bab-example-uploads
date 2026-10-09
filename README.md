@@ -8,7 +8,7 @@ Intended Pages URL: https://jordanmeyer.github.io/bab-example-uploads/ (publicat
 
 ## Run and verify
 
-Use Node22.19.0/npm10.9.3. Run npm ci (a writable temporary cache can be specified), npm run test:browser -- --port 9503, then open http://127.0.0.1:9503/tests/. Application development is at /app/. npm run build generates notices and production dist; npm run preview -- --port 9504 serves http://127.0.0.1:9504/bab-example-uploads/. npm run dev is also available. Tests import the same model as the application. tests/layout.html provides fixed1440/390/320 frames for shared-browser verification.
+Use Node22.19.0/npm10.9.3. Run npm ci (a writable temporary cache can be specified), npm run test:browser -- --port 9503, then open http://127.0.0.1:9503/tests/. Application development is at /app/. npm run build generates notices and production dist; npm run preview -- --port 9504 serves http://127.0.0.1:9504/bab-example-uploads/. npm run dev is also available. Tests import the same model as the application. tests/layout.html provides fixed1440/390/320 frames of the production9504 preview for shared-browser verification. Run both servers when inspecting frames.
 
 ## Interpretation
 
