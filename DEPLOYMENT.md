@@ -19,3 +19,7 @@ Coordinator opened the real Pages URL and imported the two committed synthetic C
 ## Returning-browser correction
 
 Follow-up publicationc0fae93786ae58d249adb978065ec667a4375143 succeeded in Actions37892426427. Reviewed source81cbd7110caef07f754d9b377e183dca4e17f5a7 changes only native autocomplete attributes. Coordinator live pre-interaction Back check reset Jan/Product to allmonths/Channel matching totals91182/15134/76048, threecorrectgroups, twocharts and emptywarning/errorlogs.
+
+## Authorized live revision — 2026-10-09
+
+Published eceabd1f4a17e4e826829015a86d8314831da1cf after independent PASS of source 7b6369e27c216a9b24c1931581807983158076e7. Coordinator verified exact GitHub Actions run 37965946836 succeeded and actual Pages at https://jordanmeyer.github.io/bab-example-uploads/. May / Everyday tee / Email produced $560 and 10 of 30 units returned. Reload restored $239,961 net and Paid social gross rank 1 → net rank 2. Console logs were empty; BUILD-STORY and source links pointed to the correct public repository. This is coordinator-observed live evidence. Subsequent commit updates reports only.
