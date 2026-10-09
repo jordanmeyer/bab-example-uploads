@@ -41,3 +41,10 @@ Freshness before and after the final model/production recheck: committed/staged/
 ## Independent narrow review — Round 2 FAIL, checkpoint036710e
 
 Reviewer visually inspected actual320px production. Despite no page overflow, Net sales wrapped the final decimal digit onto another line and value-axis labels crowded together in the narrow plot. Required correction: one-column KPI layout at400px and below, fewer value ticks and hide-overlap behavior. Axis labels use compact USD notation for very large valid amounts; exact cents remain in KPIs/tables/exports. Model/import checks stayed passing. This failed visual round is preserved; a new source checkpoint and rendered review are required.
+
+
+## Final handoff — independent PASS, source b64d85f7658a18602a9ad5877232d100069ac463
+
+Round3 in REVIEW.md independently approves the current source after preserving both failed rounds. Reviewer reran31/31 browser checks, the actual320px production screenshot, solid chart-hover state, independently authored safe-CSV/zero-price/leap-date examples, keyboard/paging and navigation back. The exact default net amount now occupies one line; developer measured height32.20px equal to line-height32.2px within252.70px width. The model and PLAN did not change in the narrow fix. See REVIEW.md for the independent observations and limits rather than treating them as developer-run checks.
+
+Current build uses index-BLlrDVGi.js and index-CrM2htBU.css. Production build succeeds with the disclosed791.37kB bundle advisory. Final source/PLAN freshness checks against b64d85f pass: all relevant diffs exit0, untracked source listing empty, PLAN status/diff empty. Only evidence reports follow this source checkpoint. No required review finding or unresolved product/model choice remains. Coordinator is authorized to publish after its own final destination/freshness checks; publication/live verification is not claimed here.

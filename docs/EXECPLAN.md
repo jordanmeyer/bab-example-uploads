@@ -14,7 +14,7 @@ Classmates can replace two local CSV exports, find gross sales leadership that v
 - [x] (2026-10-09) Build strict transactional CSV parsing, exact-cent joins/aggregates and explanatory interface.
 - [x] (2026-10-09) Observe31/31 exploratory model tests passing in browser.
 - [x] (2026-10-09) Commit source, verify31 model cases, and exercise packaged imports/filters/errors/downloads; inspect fixed-width layouts and keyboard focus.
-- [ ] Resolve independent review findings and record final PASS.
+- [x] (2026-10-09) Resolve production parsing and narrow-layout findings; independent Round3 PASS at b64d85f7658a18602a9ad5877232d100069ac463.
 - [ ] Coordinator publishes and verifies exact live revision.
 
 ## Surprises & Discoveries
@@ -29,7 +29,7 @@ Production checkpoint1daf1f48 failed: minified closure names caused Arquero Inva
 
 ## Outcomes & Retrospective
 
-A usable dashboard and31 model checks exist. A production-only Arquero minification failure was found and fixed, then known-answer imports and failed transactional replacements passed in the packaged app. Independent review and publication remain pending. The sample illustrates why high gross revenue alone is insufficient; it does not establish a business recommendation.
+A usable dashboard and31 model checks exist. A production-only Arquero minification failure was found and fixed, then known-answer imports and failed transactional replacements passed in the packaged app. Independent review passed after a second rendered round fixed narrow currency wrapping and crowded chart ticks. Publication remains coordinator-owned and pending. The sample illustrates why high gross revenue alone is insufficient; it does not establish a business recommendation.
 
 ## Context and Orientation
 
@@ -60,3 +60,5 @@ Exploratory result:31/31 passed;0 failed. Public attribution authorized: Jordan 
 joinData(salesCsv, returnsCsv) returns validated rows, returnCount and observedThrough. summarize(dataset, filters) returns rows, totals, groups and months. exportCsv(rows) quotes safely and escapes spreadsheet formula prefixes. Papa Parse5.7.0, Arquero8.0.3, ECharts6.1.0 and Vite8.3.4 are exact approved versions; Node22.19.0/npm10.9.3 build locally and in CI. No backend or runtime external service exists.
 
 Revision note: initial living plan records implementation and exploratory checks; final review remains explicit rather than inferred from compilation.
+
+Revision note: both failed independent rounds remain in REVIEW.md/EVALUATION.md. Final source b64d85f is approved; later commits contain reports only.
