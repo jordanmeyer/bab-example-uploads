@@ -20,7 +20,7 @@ const quality = echarts.init($('quality-chart'), echartsTheme());
 const trend = echarts.init($('trend-chart'), echartsTheme());
 const resize = new ResizeObserver(() => { quality.resize(); trend.resize(); });
 resize.observe($('quality-chart')); resize.observe($('trend-chart'));
-window.addEventListener('pagehide', () => { resize.disconnect(); quality.dispose(); trend.dispose(); });
+window.addEventListener('pagehide', event => { if (!event.persisted) { resize.disconnect(); quality.dispose(); trend.dispose(); } });
 
 function message(text, error = false) {
   $('notice').textContent = text;

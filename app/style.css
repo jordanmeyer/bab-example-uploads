@@ -67,7 +67,7 @@ select{display:block;width:100%;margin-top:6px;min-height:42px;border:1px solid 
 .metrics .refund{border-top-color:var(--duke-copper)}
 .metrics .net{border-top-color:var(--duke-navy-blue)}
 .metrics h3{font-size:12px;font-weight:400;margin-bottom:10px}
-.metrics strong{font-weight:400;font-size:28px;line-height:1.15;letter-spacing:-.7px;color:var(--duke-navy-blue);font-variant-numeric:tabular-nums}
+.metrics strong{display:block;overflow-wrap:anywhere;font-weight:400;font-size:28px;line-height:1.15;letter-spacing:-.7px;color:var(--duke-navy-blue);font-variant-numeric:tabular-nums}
 .metrics .refund strong{color:var(--duke-copper)}
 .metrics p{font-size:11px;color:var(--duke-graphite);margin:10px 0 0}
 .chart-section{padding:28px;background:white;border:1px solid var(--duke-hatteras);margin-bottom:24px;min-width:0}
